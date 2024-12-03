@@ -25,32 +25,13 @@ function add_data($data) {
     $major = isset($data['major']) ? htmlspecialchars($data['major']) : '';
     $faculty = isset($data['faculty']) ? htmlspecialchars($data['faculty']) : '';
     $university = isset($data['university']) ? htmlspecialchars($data['university']) : '';
-    $picture = upload_file(); 
-
-    if (!$picture) {
-        return false;
-    }
+    $picture = 'user.jpg';
 
     $query = "INSERT INTO tb_mahasiswa (nim, name, gender, address, email, telp, major, faculty, university, picture) 
               VALUES ('$nim', '$name', '$gender', '$address', '$email', '$telp', '$major', '$faculty', '$university', '$picture')";
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
-}
-
-// Upload gambar
-function upload_file() {
-    $uploadDir = 'uploads/';  // disimpen di folder uploads
-    
-    $fileTmpName = $_FILES['picture']['tmp_name'];
-    $fileName = $_FILES['picture']['name'];
-    
-    if (move_uploaded_file($fileTmpName, $uploadDir . $fileName)) {
-        return $fileName; 
-    } else {
-        echo "<script>alert('Gagal mengunggah file!');</script>";
-        return false;
-    }
 }
 
 // Update
@@ -70,12 +51,9 @@ function update_data($data, $id) {
     $major = isset($data['major']) ? htmlspecialchars($data['major']) : '';
     $faculty = isset($data['faculty']) ? htmlspecialchars($data['faculty']) : '';
     $university = isset($data['university']) ? htmlspecialchars($data['university']) : '';
-    
-    $picture = upload_file(); 
-    if (!$picture) {
-        return false;  
-    }
+    $picture = isset($data['picture']) ? $data['picture'] : 'user.jpg';
 
+    // Ambil gambar yang sudah ada (tidak ada perubahan gambar)
     $query = "UPDATE tb_mahasiswa SET 
               nim = '$nim', 
               name = '$name', 
@@ -85,17 +63,14 @@ function update_data($data, $id) {
               telp = '$telp', 
               major = '$major', 
               faculty = '$faculty', 
-              university = '$university', 
-              picture = '$picture' 
+              university = '$university',
+              picture = '$picture'
               WHERE id = $id";
 
-    if (mysqli_query($conn, $query)) {
-        return mysqli_affected_rows($conn);
-    } else {
-        echo "Error: " . mysqli_error($conn); 
-        return false;
-    }
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
 }
+
 
 // Delete
 function delete_data($id) {
@@ -111,5 +86,18 @@ function delete_data($id) {
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
+}
+
+// Search
+function searching ($search){
+    global $conn;
+
+    $query_search = "SELECT * FROM tb_mahasiswa WHERE nim LIKE '%$search%' OR name LIKE '%$search%' OR 
+                    gender LIKE '%$search%' OR address LIKE '%$search%' OR email LIKE '%$search%' OR 
+                    telp LIKE '%$search%' OR major LIKE '%$search%' OR faculty LIKE '%$search%' OR 
+                    university LIKE '%$search%'";
+
+    $searching = mysqli_query($conn, $query_search);
+    return $searching;
 }
 ?>

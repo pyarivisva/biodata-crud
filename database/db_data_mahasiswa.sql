@@ -33,14 +33,14 @@ CREATE TABLE `tb_mahasiswa` (
   `faculty` varchar(25) DEFAULT NULL,
   `university` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `tb_mahasiswa` */
 
 insert  into `tb_mahasiswa`(`id`,`nim`,`picture`,`name`,`gender`,`address`,`email`,`telp`,`major`,`faculty`,`university`) values 
-(12,'2305551069','foto pyari.jpg','Pyari Visvapujita Devi Dasi','Perempuan','Jalan Udayana','dasi.2305551069@student.unud.ac.id','0821402436','Teknologi Informasi','Teknik','Udayana'),
-(13,'1234567','foto remove bg.jpg','Serena','Perempuan','Jalan Udayana','serena@gmail.com','082345667','Teknologi Informasi','Teknik','Udayana'),
-(14,'2432534654','carol.jpg','Caroline','Perempuan','Jalan Piksa','emailcaroline@gmail.com','022141712432','Animasi','Seni','Tweening');
+(22,'2305551069','user.png','Pyari Visvapujita Devi Dasi','Perempuan','Jalan','dasi.2305551069@student.unud.ac.id','0821402436','Teknologi Informasi','Teknik','Udayana'),
+(24,'2305551068','user.jpg','Caroline','Perempuan','Jalan Udayana','carol@gmail.com','0821402436','Animasi','Seni','Tweening'),
+(25,'2305551070','user.jpg','Leonardo Edwin','Laki-Laki','Jalan Jalan','leo@gmail.com','0823741782','Bisnis','Bisnis','Washington');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

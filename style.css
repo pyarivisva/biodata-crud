@@ -21,6 +21,55 @@ p {
     margin-bottom: 15px;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.btn-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    /* Bagian kiri mengambil ruang minimum yang diperlukan */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    /* Bagian kanan mengambil ruang minimum yang diperlukan */
+}
+
+input[name="searches"] {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    height: 35px;
+}
+
+button[name="search"] {
+    background-color: #303481;
+    color: #F5F5F5;
+    font-size: 14px;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 35px;
+}
+
+button[name="search"]:hover {
+    border: 2px solid #171a59;
+}
+
 .btn-add {
     background-color: #303481;
     color: #F5F5F5;
@@ -45,6 +94,7 @@ p {
 .btn-add:hover {
     border: 2px solid #171a59;
 }
+
 
 table {
     margin: 20px 0px;
@@ -150,11 +200,6 @@ button img {
     padding: 5px;
     font-size: 18px;
     border: none;
-}
-
-.form p {
-    color: #c32a2a !important;
-    font-size: 12px !important;
 }
 
 .biodata-input {

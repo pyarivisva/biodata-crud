@@ -65,7 +65,7 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
 </head>
 
@@ -126,10 +126,10 @@ if (isset($_POST["submit"])) {
                     <tr>
                         <td><span id="spn_foto">Foto Diri</span></td>
                         <td>
-                            <input type="file" name="picture" id="picture" <?= $mode === 'add' ? 'required' : '' ?>>
+                            <input type="file" name="picture" id="picture" disabled
+                                <?= $mode === 'add' ? 'required' : '' ?>>
 
                             <?php if ($mode === 'edit' && $data['picture']): ?>
-                            <p>Silakan upload ulang gambar.</p>
                             <?php endif; ?>
                         </td>
                     </tr>

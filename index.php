@@ -1,3 +1,9 @@
+<!-- Sebelumnya maaf pak, karena pada tugas form 1 saya salah paham dengan tugasnya, 
+ saya kira juga mencoba untuk upload gambar, namun saat kelas minggu ini bapak ada memberitahu 
+ bahwa pertemuan selanjutnya baru akan diajarkan cara upload gambar dalam formnya, 
+ jadi untuk tugas form 2 ini saya menghapus fungsi untuk upload gambar dan hanya 
+ menggunakan default gambar untuk foto diri yang ditambahkan user pak -->
+
 <?php
 require 'function.php';
     
@@ -18,6 +24,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     }
 }
 
+if (isset($_POST["search"])){
+    $mahasiswa = searching($_POST["searches"]);
+   }
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +40,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     <meta name="author" content="Pyari Visvapujita Devi Dasi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biodata</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
 
 </head>
@@ -39,10 +49,24 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     <h1>Data Mahasiswa</h1>
     <p>Kelola data mahasiswa dengan create, read, update, dan delete melalui website ini. Terhitung ada
         <?php echo $jumlahMahasiswa; ?> data mahasiswa saat ini.</p>
-    <button class="btn-add" onclick="location.href='add.php'">
-        <img src="icon/add.png" alt="Tambah Data" class="button-icon">
-        Tambah Data
-    </button>
+    <div class="btn-container">
+        <div class="btn-left">
+            <button class="btn-add" onclick="location.href='add.php'">
+                <img src="icon/add.png" alt="Tambah Data" class="button-icon">
+                Tambah Data
+            </button>
+        </div>
+
+        <form method="POST" action="">
+            <div class="search-container">
+                <input type="text" name="searches" placeholder="Ketik kata kunci.." autofocus>
+                <button class="btn-add" type="submit" name="search">
+                    <img src="icon/search.png" alt="Search Data" class="button-icon">
+                    Search
+                </button>
+            </div>
+        </form>
+    </div>
 
 
     <div class="table-container">
@@ -69,7 +93,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
                 <tr>
                     <td><?= $i ?></td>
                     <td>
-                        <img src="uploads/<?= $data['picture'] ?>" alt="Foto Mahasiswa" width="100">
+                        <img src="image/user.jpg" Foto Default" width="100">
                     </td>
                     <td><?= $data["nim"] ?></td>
                     <td><?= $data["name"] ?></td>
